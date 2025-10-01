@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Mini Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .question { margin-bottom: 15px; }
+    .answers button { display: block; margin: 4px 0; }
+    #score { font-size: 18px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Mini Quiz</h2>
+  <div id="quiz"></div>
+  <div id="score">Wynik: 0</div>
+  <button id="restartBtn">Restart</button>
+
+<script>
+let current = 0;
+let score = 0;
+
+// Proste pytania
+const questions = [
+  {q: "Stolica Francji?", answers: ["Berlin","Paryż","Rzym"], correct: 1},
+  {q: "2 + 2 = ?", answers: ["3","4","5"], correct: 1},
+  {q: "Kolor nieba?", answers: ["Niebieski","Zielony","Czerwony"], correct: 0}
+];
+
+function startQuiz(){
+  showQuestion();
+}
+
+function showQuestion(){
+  const quiz = document.getElementById("quiz");
+  quiz.innerHTML = "";
+
+  const q = questions[current];
+  
+  const div = document.createElement("div");
+  div.className = "question";
+  div.textContent = q.q;
+  quiz.appendChild(div);
+
+  const answersDiv = document.createElement("div");
+  answersDiv.className = "answers";
+
+  q.answers.forEach((ans, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = ans;
+    btn.setAttribute("onclick", "checkAnswer("+i+")");
+    answersDiv.appendChild(btn);
+  });
+
+  quiz.appendChild(answersDiv);
+}
+
+function restartQuiz(){
+  document.getElementById("quiz").innerHTML = "";
+  document.getElementById("score").textContent = "Wynik: 0";
+}
+
+function checkAnswer(i){
+  const q = questions[current];
+  if(i === q.correct){
+    score++;
+    document.getElementById("score").textContent = "Wynik: " + score;
+  }
+  current++;
+  showQuestion();
+}
+
+document.getElementById("restartBtn").addEventListener("click", restartQuiz);
+
+startQuiz();
+</script>
+</body>
+</html>
