@@ -28,6 +28,11 @@ const questions = [
 ];
 
 function startQuiz(){
+  if(questions.length === 0){
+    document.getElementById("quiz").textContent = "Brak pytań!";
+    return;
+  }
+
   showQuestion();
 }
 
