@@ -37,6 +37,11 @@ function startQuiz(){
 }
 
 function showQuestion(){
+  if(current >= questions.length){
+    document.getElementById("quiz").textContent = "Koniec quizu!";
+    return;
+  }
+
   const quiz = document.getElementById("quiz");
   quiz.innerHTML = "";
 
