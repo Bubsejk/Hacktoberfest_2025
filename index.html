@@ -65,7 +65,7 @@ function showQuestion(){
   q.answers.forEach((ans, i) => {
     const btn = document.createElement("button");
     btn.textContent = ans;
-    btn.setAttribute("onclick", "checkAnswer("+i+")");
+    btn.addEventListener("click", () => checkAnswer(i));
     answersDiv.appendChild(btn);
   });
 
