@@ -19,6 +19,11 @@
 <script>
 let current = 0;
 let score = 0;
+const saved = localStorage.getItem("quizScore");
+if(saved !== null){
+  score = parseInt(saved, 10);
+  document.getElementById("score").textContent = "Wynik: " + score;
+}
 
 // Proste pytania
 const questions = [
@@ -75,6 +80,7 @@ function checkAnswer(i){
   if(i === q.correct){
     score++;
     document.getElementById("score").textContent = "Wynik: " + score;
+	localStorage.setItem("quizScore", score);
   }
   current++;
   showQuestion();
