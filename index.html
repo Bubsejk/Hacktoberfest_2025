@@ -21,11 +21,13 @@ let current = 0;
 let score = 0;
 
 // Proste pytania
-const questions = [
+let questions = [
   {q: "Stolica Francji?", answers: ["Berlin","Paryż","Rzym"], correct: 1},
   {q: "2 + 2 = ?", answers: ["3","4","5"], correct: 1},
   {q: "Kolor nieba?", answers: ["Niebieski","Zielony","Czerwony"], correct: 0}
 ];
+
+questions = questions.sort(() => Math.random() - 0.5);
 
 function startQuiz(){
   if(questions.length === 0){
