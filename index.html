@@ -66,8 +66,10 @@ function showQuestion(){
 }
 
 function restartQuiz(){
-  document.getElementById("quiz").innerHTML = "";
+  current = 0;
+  score = 0;
   document.getElementById("score").textContent = "Wynik: 0";
+  startQuiz();
 }
 
 function checkAnswer(i){
